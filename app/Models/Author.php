@@ -5,18 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Author extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'email',
-        'registration_date',
-        'address',
+        'nationality',
+        'birth_date',
+        'death_date',
+        'biography',
     ];
 
     protected $casts = [
-        'registration_date' => 'date',
+        'birth_date' => 'date',
+        'death_date' => 'date',
     ];
 }

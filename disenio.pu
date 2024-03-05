@@ -1,0 +1,54 @@
+@startuml
+
+class User {
+    ID: int
+    name: varchar(100)
+    email: varchar(100)
+    registration_date: date
+    address: varchar(255)
+}
+
+class Book {
+    ISBN: bigint
+    title: varchar(255)
+    author_id: int
+    publisher: varchar(100)
+    publication_year: int
+    user_id: int
+}
+
+class Review {
+    ID: int
+    user_id: int
+    book_ISBN: bigint
+    content: text
+    creation_date: timestamp
+}
+
+class Author {
+    ID: int
+    name: varchar(100)
+    nationality: varchar(50)
+    birth_date: date
+    death_date: date
+    biography: text
+}
+
+class Category {
+    ID: int
+    name: varchar(50)
+    description: text
+}
+
+class Book_Category {
+    book_ISBN: bigint
+    category_id: int
+}
+
+User "1" -- "n" Book : owns
+Author "1" -- "n" Book : writes
+Book "1" -- "n" Review : has
+Book "1" -- "n" Book_Category : belongs to
+Book_Category "n" -- "1" Category : has
+
+@enduml
